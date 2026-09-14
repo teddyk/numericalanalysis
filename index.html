@@ -88,10 +88,12 @@ h1{
 
 .rule{border:0;height:1px;background:var(--rule);margin:60px 0}
 
-.hero{display:grid;grid-template-columns:1fr 250px;gap:56px;align-items:start;margin-top:56px}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:60px;
+  align-items:start;margin-top:56px}
 .cover{
-  width:100%;display:block;border:1px solid var(--rule);
-  box-shadow:14px 16px 0 -2px rgba(20,33,47,.07), 0 22px 44px -20px rgba(20,33,47,.4);
+  width:100%;height:auto;aspect-ratio:537/750;object-fit:contain;display:block;
+  border:1px solid var(--rule);background:#fff;
+  box-shadow:12px 14px 0 -2px rgba(20,33,47,.06), 0 20px 40px -20px rgba(20,33,47,.45);
 }
 .specs{list-style:none;margin:22px 0 0;padding:0;font-size:.9rem}
 .specs li{display:flex;justify-content:space-between;gap:14px;
@@ -216,7 +218,7 @@ footer{margin:80px 0 0;padding:34px 0 60px;border-top:1px solid var(--rule);
     </div>
 
     <div>
-      <img class="cover" src="assets/cover.jpg" width="750" height="750"
+      <img class="cover" src="assets/cover.jpg" width="537" height="750"
            alt="Εξώφυλλο: Εισαγωγή στην Αριθμητική Ανάλυση, Κοκκίνης – Κολέτσος, Εκδόσεις Τσότρας 2023">
       <ul class="specs">
         <li><span class="k">Κωδ. Ευδόξου</span><span class="v">122075205</span></li>
