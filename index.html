@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Εισαγωγή στην Αριθμητική Ανάλυση — Κοκκίνης, Κολέτσος</title>
+<meta name="description" content="Εισαγωγή στην Αριθμητική Ανάλυση, Β. Χ. Κοκκίνης & Ι. Θ. Κολέτσος. Πανεπιστημιακό σύγγραμμα, 11 κεφάλαια, 428 σελίδες. Κωδικός Ευδόξου 122075205. Πίνακας περιεχομένων και δείγμα κεφαλαίου.">
+<link rel="canonical" href="https://numericalanalysis.gr/">
+<meta property="og:type" content="book">
+<meta property="og:title" content="Εισαγωγή στην Αριθμητική Ανάλυση — Κοκκίνης, Κολέτσος">
+<meta property="og:description" content="Πανεπιστημιακό σύγγραμμα αριθμητικής ανάλυσης για ένα εξάμηνο. 11 κεφάλαια, 428 σελίδες. Κωδ. Ευδόξου 122075205.">
+<meta property="og:image" content="https://numericalanalysis.gr/assets/cover.jpg">
+<meta property="og:url" content="https://numericalanalysis.gr/">
+<meta property="og:locale" content="el_GR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Literata:ital,opsz,wght@0,7..72,300..600;1,7..72,400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "Εισαγωγή στην Αριθμητική Ανάλυση",
+  "author": [
+    {"@type": "Person", "name": "Βασίλειος Χ. Κοκκίνης"},
+    {"@type": "Person", "name": "Ιωάννης Θ. Κολέτσος"}
+  ],
+  "isbn": "9786182170465",
+  "numberOfPages": 428,
+  "inLanguage": "el",
+  "datePublished": "2023",
+  "bookEdition": "1η",
+  "bookFormat": "https://schema.org/Paperback",
+  "publisher": {"@type": "Organization", "name": "Εκδόσεις Τσότρας"},
+  "url": "https://numericalanalysis.gr/",
+  "image": "https://numericalanalysis.gr/assets/cover.jpg"
+}
+</script>
+<style>
+:root{
+  --paper:#f4f1e8;
+  --paper-deep:#eae5d6;
+  --ink:#14212f;
+  --ink-soft:#41505f;
+  --ink-faint:#8b9098;
+  --rule:#c9c2ae;
+  --accent:#8c2f22;
+  --accent-soft:#b8543f;
+  --grid:rgba(20,33,47,.055);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:28px 28px;
+  color:var(--ink);
+  font-family:"Literata",Georgia,"Times New Roman",serif;
+  font-size:17px;
+  line-height:1.68;
+  font-weight:350;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 50% -10%, rgba(255,255,255,.85), transparent 62%);
+}
+.wrap{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:0 28px}
+
+header.mast{padding:76px 0 0}
+.eyebrow{
+  font-size:12.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 26px
+}
+h1{
+  font-family:"GFS Didot",Georgia,serif;font-weight:400;
+  font-size:clamp(2.6rem,7vw,4.4rem);line-height:1.04;
+  margin:0 0 18px;letter-spacing:-.005em;
+}
+.byline{
+  font-family:"GFS Didot",Georgia,serif;font-size:clamp(1.05rem,2.4vw,1.35rem);
+  color:var(--ink-soft);margin:0 0 4px
+}
+.byline .aff{display:block;font-family:"Literata",serif;font-size:.8rem;
+  letter-spacing:.06em;color:var(--ink-faint);margin-top:8px;text-transform:uppercase}
+.lede{max-width:60ch;margin:34px 0 0;font-size:1.12rem;color:var(--ink-soft)}
+
+.rule{border:0;height:1px;background:var(--rule);margin:60px 0}
+
+.hero{display:grid;grid-template-columns:1fr 250px;gap:56px;align-items:start;margin-top:56px}
+.cover{
+  width:100%;display:block;border:1px solid var(--rule);
+  box-shadow:14px 16px 0 -2px rgba(20,33,47,.07), 0 22px 44px -20px rgba(20,33,47,.4);
+}
+.specs{list-style:none;margin:22px 0 0;padding:0;font-size:.9rem}
+.specs li{display:flex;justify-content:space-between;gap:14px;
+  padding:9px 0;border-bottom:1px solid var(--rule)}
+.specs li:first-child{border-top:1px solid var(--rule)}
+.specs .k{color:var(--ink-faint);white-space:nowrap}
+.specs .v{font-variant-numeric:tabular-nums;text-align:right;font-weight:500}
+
+.intro{margin:0 0 26px;color:var(--ink-soft)}
+.downloads{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.dl{
+  display:block;text-decoration:none;color:inherit;background:rgba(255,255,255,.55);
+  border:1px solid var(--rule);padding:22px 24px;transition:.22s ease;
+  position:relative;overflow:hidden;
+}
+.dl::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+  background:var(--accent);transition:width .3s cubic-bezier(.2,.7,.3,1)}
+.dl:hover{background:#fff;transform:translateY(-2px);
+  box-shadow:0 14px 30px -18px rgba(20,33,47,.55)}
+.dl:hover::after{width:100%}
+.dl .lbl{display:block;font-size:11.5px;letter-spacing:.19em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;margin-bottom:9px}
+.dl .ttl{display:block;font-family:"GFS Didot",serif;font-size:1.3rem;line-height:1.25}
+.dl .meta{display:block;font-size:.82rem;color:var(--ink-faint);margin-top:8px}
+
+h2{
+  font-family:"GFS Didot",Georgia,serif;font-weight:400;
+  font-size:clamp(1.7rem,3.6vw,2.3rem);margin:0 0 8px;line-height:1.15
+}
+.sub{color:var(--ink-faint);font-size:.92rem;margin:0 0 34px}
+
+.ch{border-top:1px solid var(--rule);padding:22px 0}
+.ch:last-child{border-bottom:1px solid var(--rule)}
+.ch-head{display:flex;gap:20px;align-items:baseline}
+.ch-num{
+  font-family:"GFS Didot",serif;font-size:1.9rem;color:var(--accent);
+  min-width:2.1ch;text-align:right;line-height:1;font-variant-numeric:tabular-nums
+}
+.ch-title{font-family:"GFS Didot",serif;font-size:1.35rem;line-height:1.25;margin:0;font-weight:400}
+.ch-body{margin:10px 0 0 calc(2.1ch + 20px);color:var(--ink-soft);font-size:.93rem}
+.ch-body span{white-space:nowrap}
+.ch-body span::after{content:" · ";color:var(--rule);white-space:normal}
+.ch-body span:last-child::after{content:""}
+.tail{display:flex;gap:18px;flex-wrap:wrap;margin-top:22px;
+  font-size:.86rem;color:var(--ink-faint)}
+
+.plan{width:100%;border-collapse:collapse;font-size:.92rem}
+.plan th{text-align:left;font-weight:600;font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-faint);padding:0 0 10px;
+  border-bottom:1px solid var(--ink)}
+.plan td{padding:11px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+.plan td:first-child{width:8.5em;color:var(--accent);font-variant-numeric:tabular-nums;
+  white-space:nowrap}
+
+.inst{border-top:1px solid var(--rule);padding:16px 0}
+.inst:last-of-type{border-bottom:1px solid var(--rule)}
+.inst h3{margin:0 0 4px;font-size:.78rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
+.inst p{margin:0;font-family:"GFS Didot",serif;font-size:1.1rem}
+
+.finds{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.find{border:1px solid var(--rule);padding:24px;background:rgba(255,255,255,.45)}
+.find h3{margin:0 0 10px;font-family:"GFS Didot",serif;font-size:1.25rem;font-weight:400}
+.find p{margin:0 0 14px;font-size:.92rem;color:var(--ink-soft)}
+a.link{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft);
+  padding-bottom:1px;transition:.18s}
+a.link:hover{background:rgba(140,47,34,.09)}
+code{font-family:ui-monospace,Menlo,Consolas,monospace;
+  font-size:.88em;background:var(--paper-deep);padding:1px 6px;border-radius:2px}
+
+footer{margin:80px 0 0;padding:34px 0 60px;border-top:1px solid var(--rule);
+  font-size:.85rem;color:var(--ink-faint);display:flex;justify-content:space-between;
+  gap:20px;flex-wrap:wrap}
+
+@media (max-width:760px){
+  body{font-size:16px}
+  .hero{grid-template-columns:1fr;gap:36px}
+  .cover{max-width:230px}
+  .downloads,.finds{grid-template-columns:1fr}
+  .ch-body{margin-left:0}
+  header.mast{padding-top:48px}
+  .rule{margin:44px 0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Πανεπιστημιακό σύγγραμμα · Κωδ. Ευδόξου 122075205</p>
+  <h1>Εισαγωγή στην<br>Αριθμητική Ανάλυση</h1>
+  <p class="byline">Β. Χ. Κοκκίνης &nbsp;·&nbsp; Ι. Θ. Κολέτσος
+    <span class="aff">Αναπληρωτές Καθηγητές, Εθνικό Μετσόβιο Πολυτεχνείο</span></p>
+  <p class="lede">Ένα πλήρες εγχειρίδιο αριθμητικής ανάλυσης για ένα εξάμηνο
+  διδασκαλίας — από την αριθμητική κινητής υποδιαστολής και τη διάδοση
+  σφαλμάτων, μέχρι τις αριθμητικές μεθόδους επίλυσης συνήθων διαφορικών
+  εξισώσεων.</p>
+
+  <div class="hero">
+    <div>
+      <p class="intro">Η δομή είναι σταθερή σε όλα τα κεφάλαια: θεωρητική
+      ανάπτυξη κάθε μεθόδου με έμφαση στο <strong>σφάλμα</strong>, την
+      <strong>ευστάθεια</strong> και την <strong>ταχύτητα σύγκλισης</strong>,
+      και στη συνέχεια λυμένες ασκήσεις, εφαρμογές σε πρακτικά προβλήματα και
+      άλυτες ασκήσεις. Το τελευταίο κεφάλαιο συγκεντρώνει προβλήματα για
+      υπολογιστή, οργανωμένα ανά κεφάλαιο, για το εργαστηριακό σκέλος του
+      μαθήματος.</p>
+
+      <div class="downloads">
+        <a class="dl" href="pdf/periexomena.pdf">
+          <span class="lbl">PDF · 263 KB</span>
+          <span class="ttl">Αναλυτικός πίνακας περιεχομένων</span>
+          <span class="meta">Όλα τα κεφάλαια και οι ενότητες, με σελιδοποίηση</span>
+        </a>
+        <a class="dl" href="pdf/deigma-kefalaio-2.pdf">
+          <span class="lbl">PDF · 993 KB</span>
+          <span class="ttl">Δείγμα: Κεφάλαιο 2</span>
+          <span class="meta">Επίλυση μη γραμμικών εξισώσεων — πλήρες κεφάλαιο, σελ. 27–104</span>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <img class="cover" src="assets/cover.jpg" width="750" height="750"
+           alt="Εξώφυλλο: Εισαγωγή στην Αριθμητική Ανάλυση, Κοκκίνης – Κολέτσος, Εκδόσεις Τσότρας 2023">
+      <ul class="specs">
+        <li><span class="k">Κωδ. Ευδόξου</span><span class="v">122075205</span></li>
+        <li><span class="k">ISBN</span><span class="v">978-618-217-046-5</span></li>
+        <li><span class="k">Σελίδες</span><span class="v">428</span></li>
+        <li><span class="k">Κεφάλαια</span><span class="v">11</span></li>
+        <li><span class="k">Έκδοση</span><span class="v">1η, 2023</span></li>
+        <li><span class="k">Διαστάσεις</span><span class="v">21 × 29 cm</span></li>
+        <li><span class="k">Εκδόσεις</span><span class="v">Τσότρας</span></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<hr class="rule">
+
+<section id="periexomena">
+  <h2>Περιεχόμενα</h2>
+  <p class="sub">Κάθε κεφάλαιο κλείνει με λυμένες ασκήσεις, εφαρμογές σε
+  πρακτικά προβλήματα και άλυτες ασκήσεις.</p>
+
+  <div class="toc">
+    <div class="ch"><div class="ch-head"><span class="ch-num">1</span>
+      <h3 class="ch-title">Αριθμητική κινητής υποδιαστολής</h3></div>
+      <p class="ch-body"><span>Συστήματα κινητής υποδιαστολής</span><span>Αριθμητική κινητής υποδιαστολής</span><span>Συσσώρευση σφαλμάτων στρογγύλευσης</span></p></div>
+
+    <div class="ch"><div class="ch-head"><span class="ch-num">2</span>
+      <h3 class="ch-title">Επίλυση μη γραμμικών εξισώσεων</h3></div>
+      <p class="ch-body"><span>Εντοπισμός ριζών</span><span>Διχοτόμηση</span><span>Εσφαλμένη θέση</span><span>Επαναληπτικές μέθοδοι σταθερού σημείου</span><span>Newton–Raphson</span><span>Μέθοδος τέμνουσας</span><span>Επιτάχυνση της σύγκλισης</span></p></div>
+
+    <div class="ch"><div class="ch-head"><span class="ch-num">3</span>
+      <h3 class="ch-title">Επίλυση γραμμικών συστημάτων</h3></div>
+      <p class="ch-body"><span>Απαλοιφή Gauss</span><span>Gauss–Jordan</span><span>Μέθοδοι παραγοντοποίησης</span><span>Πίνακες ειδικής μορφής</span><span>Νόρμες διανυσμάτων και πινάκων</span><span>Ευστάθεια συστημάτων</span><span>Jacobi</span><span>Gauss–Seidel</span><span>Ταχύτητα σύγκλισης</span><span>Μέθοδοι χαλάρωσης</span><span>Μέθοδοι ελαχιστοποίησης</span><span>Μέθοδοι υποχώρων Krylov</span></p></div>
+
+    <div class="ch"><div class="ch-head"><span class="ch-num">4</span>
+      <h3 class="ch-title">Επαναληπτικές μέθοδοι για μη γραμμικά συστήματα</h3></div>
+      <p class="ch-body"><span>Μέθοδος σταθερού σημείου</span><span>Newton–Raphson</span></p></div>
+
+    <div class="ch"><div class="ch-head"><span class="ch-num">5</span>
+      <h3 class="ch-title">Υπολογισμός ιδιοτιμών και ιδιοδιανυσμάτων</h3></div>
+      <p class="ch-body"><span>Μέθοδος των δυνάμεων</span><span>Μέθοδος QR</span><span>Θεωρία Perron–Frobenius</span></p></div>
+
+    <div class="ch"><div class="ch-head"><span class="ch-num">6</span>
+      <h3 class="ch-title">Παρεμβολή</h3></div>
+      <p class="ch-body"><span>Πολυωνυμική παρεμβολή τύπου Lagrange</span><span>Παρεμβολή Hermite</span><span>Τμηματικά πολυωνυμικές συναρτήσεις</span></p></div>
+
+    <div class="ch"><div class="ch-head"><span class="ch-num">7</span>
+      <h3 class="ch-title">Διακριτά ελάχιστα τετράγωνα</h3></div>
+      <p class="ch-body"><span>Γραμμική προσέγγιση</span><span>Πολυωνυμική προσέγγιση</span><span>Εκθετική προσέγγιση</span><span>Γραμμικό πρόβλημα ελαχίστων τετραγώνων</span></p></div>
+
+    <div class="ch"><div class="ch-head"><span class="ch-num">8</span>
+      <h3 class="ch-title">Αριθμητική παραγώγιση</h3></div>
+      <p class="ch-body"><span>Τύποι πεπερασμένων διαφορών</span><span>Παραγώγιση μέσω πολυωνυμικής παρεμβολής</span><span>Μέθοδος προσδιοριστέων συντελεστών</span><span>Προέκταση Richardson</span></p></div>
+
+    <div class="ch"><div class="ch-head"><span class="ch-num">9</span>
+      <h3 class="ch-title">Αριθμητική ολοκλήρωση</h3></div>
+      <p class="ch-body"><span>Μέθοδοι τύπου Lagrange</span><span>Μέθοδοι τύπου Hermite</span><span>Ορθογώνια πολυώνυμα</span><span>Ολοκλήρωση Gauss</span></p></div>
+
+    <div class="ch"><div class="ch-head"><span class="ch-num">10</span>
+      <h3 class="ch-title">Αριθμητικές μέθοδοι για συνήθεις διαφορικές εξισώσεις</h3></div>
+      <p class="ch-body"><span>Προβλήματα αρχικών τιμών</span><span>Μονοβηματικές μέθοδοι</span><span>Πολυβηματικές μέθοδοι</span><span>Συστήματα ΣΔΕ πρώτης τάξης</span><span>Εξισώσεις ανώτερης τάξης</span><span>Άκαμπτα (stiff) συστήματα</span></p></div>
+
+    <div class="ch"><div class="ch-head"><span class="ch-num">11</span>
+      <h3 class="ch-title">Προβλήματα για υπολογιστή</h3></div>
+      <p class="ch-body"><span>Προβλήματα υλοποίησης για καθένα από τα κεφάλαια 1–10</span></p></div>
+  </div>
+
+  <p class="tail"><span>Βιβλιογραφία, αγγλική και ελληνική</span>
+    <span>Ευρετήριο αγγλικών και ελληνικών όρων</span></p>
+</section>
+
+<hr class="rule">
+
+<section id="eksamino">
+  <h2>Σε ένα εξάμηνο</h2>
+  <p class="sub">Ενδεικτική κατανομή της ύλης σε 13 εβδομάδες. Το βιβλίο
+  γράφτηκε ώστε να καλύπτεται ολόκληρο μέσα σε ένα εξάμηνο.</p>
+  <table class="plan">
+    <thead><tr><th>Εβδομάδα</th><th>Ύλη</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Κεφ. 1 — Αριθμητική κινητής υποδιαστολής, σφάλματα στρογγύλευσης</td></tr>
+      <tr><td>2 – 3</td><td>Κεφ. 2 — Επίλυση μη γραμμικών εξισώσεων</td></tr>
+      <tr><td>4 – 6</td><td>Κεφ. 3 — Επίλυση γραμμικών συστημάτων, άμεσες και επαναληπτικές μέθοδοι</td></tr>
+      <tr><td>7</td><td>Κεφ. 4 — Επαναληπτικές μέθοδοι για μη γραμμικά συστήματα</td></tr>
+      <tr><td>8</td><td>Κεφ. 5 — Ιδιοτιμές και ιδιοδιανύσματα</td></tr>
+      <tr><td>9</td><td>Κεφ. 6 — Παρεμβολή</td></tr>
+      <tr><td>10</td><td>Κεφ. 7 — Διακριτά ελάχιστα τετράγωνα</td></tr>
+      <tr><td>11</td><td>Κεφ. 8 &amp; 9 — Αριθμητική παραγώγιση και ολοκλήρωση</td></tr>
+      <tr><td>12 – 13</td><td>Κεφ. 10 — Αριθμητικές μέθοδοι για συνήθεις διαφορικές εξισώσεις</td></tr>
+    </tbody>
+  </table>
+  <p class="sub" style="margin:22px 0 0">Το Κεφάλαιο 11 τρέχει παράλληλα στο
+  εργαστήριο: δίνει προβλήματα υλοποίησης αντίστοιχα με κάθε ενότητα της
+  θεωρίας.</p>
+</section>
+
+<hr class="rule">
+
+<section id="pou-didasketai">
+  <h2>Πού διδάσκεται</h2>
+  <p class="sub">Τμήματα που έχουν δηλώσει το σύγγραμμα στον Εύδοξο για το
+  ακαδημαϊκό έτος 2026–2027.</p>
+
+  <div class="inst"><h3>Εθνικό Μετσόβιο Πολυτεχνείο</h3>
+    <p>Εφαρμοσμένων Μαθηματικών &amp; Φυσικών Επιστημών · Ηλεκτρολόγων Μηχανικών &amp; Μηχανικών Υπολογιστών · Μεταλλειολόγων Μεταλλουργών Μηχανικών · Πολιτικών Μηχανικών</p></div>
+  <div class="inst"><h3>Αριστοτέλειο Πανεπιστήμιο Θεσσαλονίκης</h3>
+    <p>Μαθηματικών · Αγρονόμων &amp; Τοπογράφων Μηχανικών</p></div>
+  <div class="inst"><h3>Πανεπιστήμιο Μακεδονίας</h3>
+    <p>Εφαρμοσμένης Πληροφορικής — Επιστήμη &amp; Τεχνολογία Υπολογιστών · Πληροφοριακά Συστήματα</p></div>
+  <div class="inst"><h3>Πανεπιστήμιο Δυτικής Αττικής</h3>
+    <p>Ναυπηγών Μηχανικών</p></div>
+  <div class="inst"><h3>Πανεπιστήμιο Πειραιώς</h3>
+    <p>Στατιστικής &amp; Ασφαλιστικής Επιστήμης</p></div>
+  <div class="inst"><h3>Πανεπιστήμιο Αιγαίου</h3>
+    <p>Στατιστικής &amp; Αναλογιστικών–Χρηματοοικονομικών Μαθηματικών</p></div>
+</section>
+
+<hr class="rule">
+
+<section id="pou-tha-to-vreite">
+  <h2>Πού θα το βρείτε</h2>
+  <p class="sub">Το σύγγραμμα διανέμεται μέσω του Ευδόξου.</p>
+  <div class="finds">
+    <div class="find">
+      <h3>Εύδοξος</h3>
+      <p>Κωδικός βιβλίου <code>122075205</code>. Από εκεί γίνεται η δήλωση από
+      τη Γραμματεία του Τμήματος και η διανομή στους φοιτητές.</p>
+      <a class="link" href="https://service.eudoxus.gr/search/#a/id:122075205/0" rel="noopener">Καρτέλα στον Εύδοξο →</a>
+    </div>
+    <div class="find">
+      <h3>Εκδόσεις Τσότρας</h3>
+      <p>Για αγορά, καθώς και για αίτημα <strong>αντιτύπου αξιολόγησης</strong>
+      από διδάσκοντες που εξετάζουν το σύγγραμμα για το μάθημά τους.</p>
+      <a class="link" href="https://www.ekdoseis-tsotras.gr/index.php?route=product/product&amp;product_id=637" rel="noopener">Σελίδα εκδότη →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Εισαγωγή στην Αριθμητική Ανάλυση · Β. Χ. Κοκκίνης, Ι. Θ. Κολέτσος ·
+    Εκδόσεις Τσότρας, Αθήνα 2023 · ISBN 978-618-217-046-5</span>
+  <span>numericalanalysis.gr</span>
+</footer>
+
+</div>
+</body>
+</html>
