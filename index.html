@@ -385,7 +385,7 @@ footer{margin:80px 0 0;padding:34px 0 60px;border-top:1px solid var(--rule);
     <li><span class="k">Β. Χ. Κοκκίνης</span>
       <a class="link" href="mailto:bkok@math.ntua.gr">bkok@math.ntua.gr</a></li>
     <li><span class="k">Επικοινωνία</span>
-      <a class="link" href="mailto:coletsos@gmail.com">coletsos@gmail.com</a></li>
+      <span class="mail" data-u="coletsos" data-d="gmail.com">coletsos&#8203; στο &#8203;gmail.com</span></li>
   </ul>
 </section>
 
@@ -427,5 +427,18 @@ footer{margin:80px 0 0;padding:34px 0 60px;border-top:1px solid var(--rule);
 </footer>
 
 </div>
+
+<script>
+/* Το email γράφεται σπαστό στο HTML ώστε να μην το μαζεύουν οι harvesters.
+   Χωρίς JavaScript παραμένει αναγνώσιμο ως «coletsos στο gmail.com». */
+document.querySelectorAll(".mail[data-u][data-d]").forEach(function (el) {
+  var addr = el.dataset.u + String.fromCharCode(64) + el.dataset.d;
+  var a = document.createElement("a");
+  a.className = "link";
+  a.href = "mailto:" + addr;
+  a.textContent = addr;
+  el.replaceWith(a);
+});
+</script>
 </body>
 </html>
