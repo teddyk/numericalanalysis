@@ -229,6 +229,9 @@ h2{
   font-size:.86rem;line-height:1.5;color:var(--ink-soft);
   animation:consent-in .35s ease both;
 }
+/* Το #consent είναι ID selector και νικάει το [hidden]{display:none}
+   του browser — χρειάζεται ρητός κανόνας για να κρύβεται. */
+#consent[hidden]{display:none}
 @keyframes consent-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 #consent p{margin:0;flex:1 1 260px}
 #consent .btns{display:flex;gap:8px;align-items:center;flex:0 0 auto}
