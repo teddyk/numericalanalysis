@@ -4,6 +4,26 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
+<!-- Consent Mode v2 — προεπιλογή: άρνηση. Χωρίς συγκατάθεση το GA4
+     στέλνει ανώνυμα, cookieless pings. Δεν τίθεται ποτέ ad_storage. -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+(function () {
+  var granted = false;
+  try { granted = localStorage.getItem("na-consent") === "granted"; } catch (e) {}
+  gtag("consent", "default", {
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+    analytics_storage: granted ? "granted" : "denied",
+    wait_for_update: 500
+  });
+  gtag("set", "ads_data_redaction", true);
+  gtag("set", "url_passthrough", true);
+})();
+</script>
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -198,6 +218,35 @@ h2{
 .inst h3{margin:0 0 4px;font-size:.78rem;
   letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:600}
 .inst p{margin:0;font-family:"GFS Didot",serif;font-size:1.1rem}
+
+/* ---------- consent banner ---------- */
+#consent{
+  position:fixed;left:16px;right:16px;bottom:16px;z-index:50;
+  max-width:560px;margin:0 auto;padding:16px 18px;
+  background:var(--paper);border:1px solid var(--ink);
+  box-shadow:0 18px 40px -18px rgba(20,33,47,.5);
+  display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap;
+  font-size:.86rem;line-height:1.5;color:var(--ink-soft);
+  animation:consent-in .35s ease both;
+}
+@keyframes consent-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+#consent p{margin:0;flex:1 1 260px}
+#consent .btns{display:flex;gap:8px;align-items:center;flex:0 0 auto}
+#consent button{
+  font:inherit;font-size:.84rem;cursor:pointer;padding:7px 14px;
+  border:1px solid var(--ink);background:transparent;color:var(--ink);
+  transition:.18s;
+}
+#consent button:hover{background:var(--ink);color:var(--paper)}
+#consent button.primary{background:var(--ink);color:var(--paper)}
+#consent button.primary:hover{background:var(--accent);border-color:var(--accent)}
+#consent button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:520px){
+  #consent{flex-direction:column;gap:12px}
+  #consent .btns{width:100%}
+  #consent button{flex:1}
+}
+@media (prefers-reduced-motion:reduce){#consent{animation:none}}
 
 .contact{list-style:none;margin:0;padding:0;max-width:520px}
 .contact li{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
@@ -477,6 +526,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 </div>
+
+<div id="consent" role="region" aria-label="Επιλογή για τα στατιστικά" hidden>
+  <p>Η σελίδα μετράει ανώνυμα τις επισκέψεις, χωρίς cookies. Αν θέλετε,
+  μπορείτε να επιτρέψετε πλήρη στατιστικά μέτρησης.</p>
+  <span class="btns">
+    <button type="button" id="consent-yes" class="primary">Να επιτρέπονται</button>
+    <button type="button" id="consent-no">Όχι</button>
+  </span>
+</div>
+
+<script>
+/* Consent banner. Δεν είναι υποχρεωτικό να πατηθεί: η σελίδα λειτουργεί
+   πλήρως αν αγνοηθεί, και η μέτρηση παραμένει ανώνυμη και cookieless
+   μέχρι να δοθεί ρητή συγκατάθεση. */
+(function () {
+  var box = document.getElementById("consent");
+  var stored = null;
+  try { stored = localStorage.getItem("na-consent"); } catch (e) {}
+  if (stored) return;                 // έχει ήδη απαντήσει
+  box.hidden = false;
+
+  function decide(value) {
+    try { localStorage.setItem("na-consent", value); } catch (e) {}
+    if (value === "granted" && typeof gtag === "function") {
+      gtag("consent", "update", { analytics_storage: "granted" });
+    }
+    box.hidden = true;
+  }
+  document.getElementById("consent-yes").addEventListener("click", function () { decide("granted"); });
+  document.getElementById("consent-no").addEventListener("click", function () { decide("denied"); });
+})();
+</script>
 
 <script>
 /* Το email γράφεται σπαστό στο HTML ώστε να μην το μαζεύουν οι harvesters.
